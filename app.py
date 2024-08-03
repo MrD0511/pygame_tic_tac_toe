@@ -4,58 +4,6 @@ import sys
 
 pygame.init()
 
-SCREEN_SIZE = 300
-GRID_SIZE = 3
-CELL_SIZE = SCREEN_SIZE // GRID_SIZE
-LINE_COLOR = (0, 0, 0)
-BG_COLOR = (255, 255, 255)
-X_PLAYER = 'X'
-O_PLAYER = 'O'
-TEXT_COLOR = (255, 255, 255)
-BUTTON_COLOR = (70, 130, 180)
-BUTTON_HOVER_COLOR = (100, 150, 200)
-BUTTON_CLICK_COLOR = (40, 100, 160)
-QUIT_BUTTON_COLOR = (211, 211, 211)  # Light Gray (Normal)
-QUIT_BUTTON_HOVER_COLOR = (169, 169, 169)  # Darker Gray (Hover)
-QUIT_BUTTON_CLICK_COLOR = (105, 105, 105)  # Even Darker Gray (Click)
-font = pygame.font.Font(None, 36)
-button_font = pygame.font.Font(None, 18)
-board = [[None for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
-current_player = X_PLAYER
-last_winner = "NO Winner"
-screen = pygame.display.set_mode((SCREEN_SIZE, SCREEN_SIZE))
-screen2 = pygame.Surface((200, 100))
-
-restart_button = Button(
-    text="Restart",
-    pos=(140, 50),  # Position within screen2
-    size=(50, 30),
-    colors={
-        'normal': BUTTON_COLOR,
-        'hover': BUTTON_HOVER_COLOR,
-        'click': BUTTON_CLICK_COLOR
-    },
-    font=button_font
-)
-
-quit_button = Button(
-    text = "Quit",
-    pos=(10,50),
-    size= ( 50, 30),
-    colors={
-        'normal': QUIT_BUTTON_COLOR,
-        'hover': QUIT_BUTTON_HOVER_COLOR,
-        'click': QUIT_BUTTON_CLICK_COLOR
-    },
-    font= button_font
-)
-
-pygame.display.set_caption("Tic Tac Toe")
-clock = pygame.time.Clock()
-running = True
-font = pygame.font.Font(None, 24)
-sub_display = False
-
 def draw_board():
     screen.fill(BG_COLOR)
     for row in range(1, GRID_SIZE):
@@ -105,6 +53,62 @@ def check_winner():
         return 'DRAW'
 
     return None
+
+SCREEN_SIZE = 300
+GRID_SIZE = 3
+CELL_SIZE = SCREEN_SIZE // GRID_SIZE
+LINE_COLOR = (0, 0, 0)
+BG_COLOR = (255, 255, 255)
+X_PLAYER = 'X'
+O_PLAYER = 'O'
+TEXT_COLOR = (255, 255, 255)
+BUTTON_COLOR = (70, 130, 180)
+BUTTON_HOVER_COLOR = (100, 150, 200)
+BUTTON_CLICK_COLOR = (40, 100, 160)
+QUIT_BUTTON_COLOR = (211, 211, 211)  # Light Gray (Normal)
+QUIT_BUTTON_HOVER_COLOR = (169, 169, 169)  # Darker Gray (Hover)
+QUIT_BUTTON_CLICK_COLOR = (105, 105, 105)  # Even Darker Gray (Click)
+
+font = pygame.font.Font(None, 36)
+button_font = pygame.font.Font(None, 18)
+
+current_player = X_PLAYER
+last_winner = "NO Winner"
+
+screen = pygame.display.set_mode((SCREEN_SIZE, SCREEN_SIZE))
+screen2 = pygame.Surface((200, 100))
+
+board = [[None for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+
+restart_button = Button(
+    text="Restart",
+    pos=(140, 50),  # Position within screen2
+    size=(50, 30),
+    colors={
+        'normal': BUTTON_COLOR,
+        'hover': BUTTON_HOVER_COLOR,
+        'click': BUTTON_CLICK_COLOR
+    },
+    font=button_font
+)
+
+quit_button = Button(
+    text = "Quit",
+    pos=(10,50),
+    size= ( 50, 30),
+    colors={
+        'normal': QUIT_BUTTON_COLOR,
+        'hover': QUIT_BUTTON_HOVER_COLOR,
+        'click': QUIT_BUTTON_CLICK_COLOR
+    },
+    font= button_font
+)
+
+pygame.display.set_caption("Tic Tac Toe")
+clock = pygame.time.Clock()
+running = True
+font = pygame.font.Font(None, 24)
+sub_display = False
 
 while running:
     draw_board()
